@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
+    private static Main instance;
+    public static Main Instance { get { return instance; } }
+    void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        instance = this;
+        Game.Instance.Init();
     }
 }
