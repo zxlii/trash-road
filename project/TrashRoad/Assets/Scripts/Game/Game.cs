@@ -1,4 +1,8 @@
-﻿public class Game
+﻿using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
+public class Game : ModelBase
 {
     private static Game instance;
     public static Game Instance
@@ -12,8 +16,7 @@
     }
     public void Init()
     {
-        Static.Instance.Init();
-        Profile.Instance.Init();
+        SceneManager.LoadSceneAsync("Level-1");
         GameScene.Instance.Init();
     }
 }

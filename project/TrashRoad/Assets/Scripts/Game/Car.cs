@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    [SerializeField]
     private bool isRunning = false;
     public bool IsRunning
     {
@@ -25,6 +26,17 @@ public class Car : MonoBehaviour
                 isRunning = false;
             }
             transform.localPosition = newPos;
+        }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag.Equals("Trash"))
+        {
+
+        }
+        else if (other.gameObject.tag.Equals("Coin"))
+        {
+
         }
     }
 }
