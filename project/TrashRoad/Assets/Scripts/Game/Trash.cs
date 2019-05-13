@@ -16,14 +16,14 @@ public class Trash : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Car"))
         {
-            // UI.Instance.OnHurt(TrashData.hurt);
+            Game.Instance.OnHurt(TrashData.hurt);
             Destroy(gameObject);
         }
     }
 
     void OnMouseUpAsButton()
     {
-        // UI.Instance.OnScore(TrashData.income);
+        Game.Instance.OnScore(TrashData.income);
         Destroy(gameObject);
     }
 }
