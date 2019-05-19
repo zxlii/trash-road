@@ -12,8 +12,9 @@ public class Trash : MonoBehaviour
             return trashData;
         }
     }
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
+        Debug.Log("trigger trash");
         if (other.gameObject.tag.Equals("Car"))
         {
             Game.Instance.OnHurt(TrashData.hurt);

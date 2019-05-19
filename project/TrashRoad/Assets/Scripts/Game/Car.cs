@@ -37,7 +37,7 @@ public class Car : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Trash"))
         {
