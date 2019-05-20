@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldEffect : MonoBehaviour {
+public class GoldEffect : MonoBehaviour
+{
+    public GameObject tmp;
+    void Awake()
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+    public void AddGold(int num)
+    {
+
+    }
+
+    private void FlyGolds(int count)
+    {
+
+    }
 }

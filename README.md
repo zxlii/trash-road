@@ -11,3 +11,7 @@ a small game for cleaning the trash on road.
 
 ### project
 程序相关工程，文件等。
+
+### ignores
+
+不提交的文件。有些没用的文件占空间比较大，放这里。
