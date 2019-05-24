@@ -6,6 +6,8 @@ public static class Util
 {
     private const string KEY_COIN = "key_coin";
     private const string KEY_LEVEL = "key_level";
+    private const string KEY_MUTE = "key_mute";
+    private const string KEY_VIBRATE = "key_vibrate";
     private const string KEY_USEDCAR = "key_usedcar";
     public const string KEY_CARPREFIX = "key_carprefix_";
     // 金币
@@ -26,15 +28,25 @@ public static class Util
     {
         PlayerPrefs.SetInt(KEY_LEVEL, value);
     }
-    // 当前使用的车id
-    public static int GetUsedCarId()
+    //静音
+    public static void SetMute(bool value)
     {
-        return PlayerPrefs.GetInt(KEY_USEDCAR);
+        PlayerPrefs.SetInt(KEY_MUTE, value ? 1 : 0);
     }
-    public static void SetUsedCarId(int value)
+    public static bool GetMute()
     {
-        PlayerPrefs.SetInt(KEY_USEDCAR, value);
+        return PlayerPrefs.GetInt(KEY_MUTE) == 1;
     }
+    //震动
+    public static void SetVibrate(bool value)
+    {
+        PlayerPrefs.SetInt(KEY_VIBRATE, value ? 1 : 0);
+    }
+    public static bool GetVibrate()
+    {
+        return PlayerPrefs.GetInt(KEY_VIBRATE) == 1;
+    }
+
     public static ModelCar GetCarModelById(int id)
     {
         ModelCar result = null;
@@ -68,5 +80,11 @@ public static class Util
     public static void SetModel(string key, ModelBase value)
     {
         PlayerPrefs.SetString(key, value.ToJson());
+    }
+
+    public static void DestroyChildren(GameObject go)
+    {
+        for (int i = go.transform.childCount - 1; i >= 0; --i)
+            GameObject.DestroyImmediate(go.transform.GetChild(i).gameObject);
     }
 }

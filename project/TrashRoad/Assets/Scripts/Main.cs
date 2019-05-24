@@ -8,25 +8,21 @@ public class Main : MonoBehaviour
     public static Main Instance;
     void Awake()
     {
-        GameObject.DontDestroyOnLoad(this);
+
+        // var json = Resources.Load("Level-1") as TextAsset;
+        // var model = JsonUtility.FromJson<DataLevel>(json.text);
+        // Debug.Log(model.objects[0].num);
+
+        // var m = new LevelConfigs();
+        // m.level = 1;
+        // var item = new ObjectInfo();
+        // item.pos = 0.3f;
+        // item.num = -4;
+        // m.objects.Add(item);
+        // Debug.Log(JsonUtility.ToJson(m));
+
         Instance = this;
-        StartCoroutine(Init());
-    }
-
-    IEnumerator Init()
-    {
-        var json = Resources.Load("Config") as TextAsset;
-        JsonUtility.FromJson<Static>(json.text);
         Profile.Instance.Init();
-        yield return null;
-
-        AsyncOperation async = SceneManager.LoadSceneAsync("Level-1");
-        while (!async.isDone)
-        {
-
-            yield return async;
-        }
-
         Game.Instance.Init();
     }
 }

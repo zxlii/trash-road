@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class Game : ModelBase
+public class Game
 {
     private static Game instance;
     public static Game Instance
@@ -15,33 +15,25 @@ public class Game : ModelBase
         }
     }
 
-    public UI ui;
-    public Car car;
+    public UI Ui;
+    public Car Car;
+    public Level Lvl;
+    public DataLevel LevelData;
     public void Init()
     {
-        ui = GameObject.Find("Main/UIRoot").GetComponent<UI>();
-        ui.Init();
+        var lvl = Profile.Instance.Level + 1;
+        LevelData = JsonUtility.FromJson<DataLevel>(Resources.Load<TextAsset>("Levels/level-" + lvl.ToString()).text);
 
-        car = GameObject.Find("car").GetComponent<Car>();
-        car.Init();
-    }
+        var prefab = Resources.Load<GameObject>("Prefabs/ui");
+        var go = GameObject.Instantiate(prefab);
+        Ui = go.GetComponent<UI>();
 
-    public void OnLevelProgress(float value)
-    {
-        ui.OnProgress(value);
-    }
+        prefab = Resources.Load<GameObject>("Prefabs/Levels/Level-" + lvl.ToString());
+        go = GameObject.Instantiate<GameObject>(prefab);
+        Lvl = go.GetComponent<Level>();
 
-    public void OnScore(int num)
-    {
-        ui.OnScore(num);
-    }
-    public void OnHurt(int num)
-    {
-        ui.OnHurt(num);
-    }
-
-    public void OnOver(float value)
-    {
-        ui.OnGameOver(value);
+        prefab = Resources.Load<GameObject>("Prefabs/car");
+        go = GameObject.Instantiate<GameObject>(prefab);
+        Car = go.GetComponent<Car>();
     }
 }

@@ -11,54 +11,51 @@ public class Profile
             return instance;
         }
     }
-
-    private int coin;
+    private int m_Coin;
+    private int m_Level;
+    private bool m_IsMute = false;
+    private bool m_IsVibrate = false;
     public int Coin
     {
-        get
-        {
-            return coin;
-        }
+        get { return m_Coin; }
         set
         {
-            coin = value;
+            m_Coin = value;
             Util.SetCoin(value);
         }
     }
-    private int level;
     public int Level
     {
-        get
-        {
-            return level;
-        }
+        get { return m_Level; }
         set
         {
-            level = value;
+            m_Level = value;
             Util.SetLevel(value);
         }
     }
-    private int usedCarId;
-    public int UsedCarId
+    public bool IsMute
     {
-        get
-        {
-            return usedCarId;
-        }
+        get { return m_IsMute; }
         set
         {
-            usedCarId = value;
-            Util.SetUsedCarId(value);
+            m_IsMute = value;
+            Util.SetMute(value);
         }
     }
-
-    public ModelCar GetCarModelById(int id)
+    public bool IsVibrate
     {
-        return Util.GetCarModelById(id);
+        get { return m_IsVibrate; }
+        set
+        {
+            m_IsVibrate = value;
+            Util.SetVibrate(value);
+        }
     }
-
     public void Init()
     {
-
+        m_Coin = Util.GetCoin();
+        m_Level = Util.GetLevel();
+        m_IsMute = Util.GetMute();
+        m_IsVibrate = Util.GetVibrate();
     }
 }

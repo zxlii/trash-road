@@ -1,0 +1,17 @@
+syntax = "proto3";
+package com.gear.packer;
+message DataLevel
+{
+	//唯一标识
+	int32 id = 1;
+	//过关奖励
+	int32 score = 2;
+	//道路长度
+	int32 roadLength = 3;
+	//
+	string objects = 4;
+	//初始清理次数
+	int32 toolClean = 5;
+	//初始加倍次数
+	int32 toolDouble = 6;
+}

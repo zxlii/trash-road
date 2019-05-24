@@ -1,0 +1,7 @@
+syntax = "proto3";
+package com.gear.packer;
+import "DataLevel.proto";
+message Constance
+{
+	repeated DataLevel levelList = 1;
+}

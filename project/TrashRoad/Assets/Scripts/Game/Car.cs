@@ -11,11 +11,18 @@ public class Car : MonoBehaviour
         get { return isRunning; }
         set { isRunning = value; }
     }
-    public float Speed = 4.0f;
+    public float Speed = 6.0f;
     private float MaxZ = 300;
-    public void Init()
-    {
+    private Level m_Level;
+    private DataLevel m_LevelData;
+    private UI m_UI;
 
+    void Start()
+    {
+        m_LevelData = Game.Instance.LevelData;
+        m_UI = Game.Instance.Ui;
+        m_Level = Game.Instance.Lvl;
+        MaxZ = m_LevelData.MaxLength;
     }
     void Update()
     {
@@ -29,11 +36,10 @@ public class Car : MonoBehaviour
             {
                 newPos.z = MaxZ;
                 isRunning = false;
-                Game.Instance.OnOver(progress);
+                m_UI.OnGameOver(progress);
             }
             transform.localPosition = newPos;
-
-            Game.Instance.OnLevelProgress(progress);
+            m_UI.OnProgress(progress);
         }
     }
 
