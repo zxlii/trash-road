@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public static class Util
 {
@@ -86,5 +87,25 @@ public static class Util
     {
         for (int i = go.transform.childCount - 1; i >= 0; --i)
             GameObject.DestroyImmediate(go.transform.GetChild(i).gameObject);
+    }
+
+    public static void TweenScaleOneByOne(Transform[] trans, Vector3 start, Vector3 end, float duration, Ease ease = DG.Tweening.Ease.Linear, Action onComplete = null)
+    {
+        Sequence seq = DOTween.Sequence();
+        foreach (var tran in trans)
+        {
+            tran.localScale = start;
+            seq.Append(tran.DOScale(end, duration).SetEase(ease));
+        }
+        seq.Play().OnComplete(() =>
+        {
+            seq.Kill(true);
+            if (onComplete != null)
+                onComplete();
+        });
+    }
+    public static void TweenScaleOneByOne(Transform[] trans, Action onComplete = null)
+    {
+        TweenScaleOneByOne(trans, Vector3.zero, Vector3.one, .3f, DG.Tweening.Ease.OutBack, onComplete);
     }
 }

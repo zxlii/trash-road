@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b475fe45fb64c12bdcae1f24f1d750, type: 3}
+  m_Name: level-6~12
+  m_EditorClassIdentifier: 
+  LevelMin: 6
+  LevelMax: 12
+  SpeedGrowth: 1
+  SpeedFixed: 0
+  SpeedMin: 6
+  SpeedMax: 8
+  TimeGrowth: 0
+  TimeFixed: 120
+  TimeMin: 0
+  TimeMax: 0
+  RewardGrowth: 3
+  RewardFixed: 0
+  RewardMin: 0
+  RewardMax: 0
+  ToolCleanGrowth: 3
+  ToolCleanFixed: 0
+  ToolCleanMin: 0
+  ToolCleanMax: 0
+  ToolDoubleGrowth: 3
+  ToolDoubleFixed: 0
+  ToolDoubleMin: 0
+  ToolDoubleMax: 0
+  TrashCountGrowth: 3
+  TrashCountFixed: 0
+  TrashCountMin: 0
+  TrashCountMax: 0
+  TrashBigCountGrowth: 1
+  TrashBigCountFixed: 0
+  TrashBigCountMin: 0
+  TrashBigCountMax: 0
+  TrashTotalScoreGrowth: 3
+  TrashTotalScoreFixed: 0
+  TrashTotalScoreMin: 0
+  TrashTotalScoreMax: 0
+  TrashTotalHurtGrowth: 3
+  TrashTotalHurtFixed: 0
+  TrashTotalHurtMin: 0
+  TrashTotalHurtMax: 0
+  CoinTotalGrowth: 1
+  CoinTotalFixed: 0
+  CoinTotalMin: 140
+  CoinTotalMax: 200
+  Children: []

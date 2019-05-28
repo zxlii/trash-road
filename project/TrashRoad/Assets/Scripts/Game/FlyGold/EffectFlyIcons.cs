@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 public class EffectFlyIcons : MonoBehaviour
 {
     public RollText rt;
@@ -10,10 +11,13 @@ public class EffectFlyIcons : MonoBehaviour
     [SerializeField]
     private FlyItem item;
     [SerializeField]
+    private Text txtNum;
+    [SerializeField]
     private Transform[] targets;
     [SerializeField]
     private Sprite[] sprites;
     public Queue<FlyItem> queue = new Queue<FlyItem>();
+    private int origin;
     private int increase;
     void Awake()
     {
@@ -27,14 +31,18 @@ public class EffectFlyIcons : MonoBehaviour
     private FlyItem last = null;
     private int type;
     //0飞金币，1飞积分
-    public void Fly(int num, int type = 0)
+    public void Fly(int origin, int inc, int type = 0)
     {
+        this.origin = origin;
+        this.increase = inc;
         this.type = type;
+
+        FlyNumberText(inc);
+
         var target = targets[type];
         var sprite = sprites[type];
-        increase = num;
-        ManagerAudio.PlaySound("AddGold");
-        var realCount = num > 200 ? more : little;
+        ManagerAudio.Instance.PlaySound("AddGold");
+        var realCount = inc > 200 ? more : little;
         if (queue.Count < realCount) return;
         for (int i = 0; i < realCount; i++)
         {
@@ -57,6 +65,17 @@ public class EffectFlyIcons : MonoBehaviour
         }
     }
 
+    public void FlyNumberText(int num)
+    {
+        var txt = GameObject.Instantiate<Text>(txtNum, txtNum.transform.parent);
+        txt.gameObject.SetActive(true);
+        txt.text = (num > 0 ? "+" : "") + num.ToString();
+        txt.color = num > 0 ? Color.green : Color.red;
+        txt.DOFade(0, 2f);
+        txt.rectTransform.DOAnchorPosY(txt.rectTransform.anchoredPosition.y + 120, 2.5f)
+        .SetEase(Ease.InCirc)
+        .OnComplete(() => GameObject.Destroy(txt.gameObject));
+    }
 
     public void Release(FlyItem item)
     {
@@ -65,17 +84,13 @@ public class EffectFlyIcons : MonoBehaviour
         {
             if (type == 0)
             {
-                int num1 = Profile.Instance.Coin;
-                int num2 = num1 + increase;
-                Profile.Instance.Coin = num2;
-                Game.Instance.Ui.txtCoin.Change(num1, num2);
+                int num2 = origin + increase;
+                Game.Instance.Ui.txtCoin.Change(origin, num2);
             }
             else if (type == 1)
             {
-                int num1 = Game.Instance.Lvl.Score;
-                int num2 = num1 + increase;
-                Game.Instance.Lvl.Score = num2;
-                Game.Instance.Ui.txtScore.Change(num1, num2);
+                int num2 = origin + increase;
+                Game.Instance.Ui.txtScore.Change(origin, num2);
             }
         }
     }

@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e3d5106edb94f2d9e48a436ee3cc4f, type: 3}
+  m_Name: level-1
+  m_EditorClassIdentifier: 
+  Id: 1
+  HP: 10
+  CarSpeed: 4
+  PlayTime: 90
+  Reward: 110
+  ToolClean: 6
+  ToolDouble: 1
+  Items:
+  - Id: 1
+    Type: 0
+    Position: 0.09301096
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 2
+    Type: 0
+    Position: 0.13957958
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 3
+    Type: 0
+    Position: 0.15897448
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 4
+    Type: 0
+    Position: 0.22151503
+    Hurt: 6
+    Score: 6
+    Coin: 0
+  - Id: 5
+    Type: 0
+    Position: 0.27455044
+    Hurt: 5
+    Score: 5
+    Coin: 0
+  - Id: 6
+    Type: 0
+    Position: 0.31954092
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 7
+    Type: 0
+    Position: 0.33674854
+    Hurt: 7
+    Score: 7
+    Coin: 0
+  - Id: 8
+    Type: 0
+    Position: 0.3828255
+    Hurt: 3
+    Score: 3
+    Coin: 0
+  - Id: 9
+    Type: 0
+    Position: 0.4305672
+    Hurt: 7
+    Score: 7
+    Coin: 0
+  - Id: 10
+    Type: 0
+    Position: 0.48473325
+    Hurt: 1
+    Score: 1
+    Coin: 0
+  - Id: 11
+    Type: 0
+    Position: 0.52084434
+    Hurt: 6
+    Score: 6
+    Coin: 0
+  - Id: 12
+    Type: 0
+    Position: 0.5926799
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 13
+    Type: 0
+    Position: 0.6212009
+    Hurt: 9
+    Score: 9
+    Coin: 0
+  - Id: 14
+    Type: 0
+    Position: 0.6726882
+    Hurt: 1
+    Score: 1
+    Coin: 0
+  - Id: 15
+    Type: 0
+    Position: 0.684995
+    Hurt: 8
+    Score: 8
+    Coin: 0
+  - Id: 16
+    Type: 0
+    Position: 0.7518703
+    Hurt: 4
+    Score: 4
+    Coin: 0
+  - Id: 17
+    Type: 0
+    Position: 0.8028027
+    Hurt: 5
+    Score: 5
+    Coin: 0
+  - Id: 18
+    Type: 0
+    Position: 0.8284911
+    Hurt: 6
+    Score: 6
+    Coin: 0
+  - Id: 19
+    Type: 0
+    Position: 0.88388926
+    Hurt: 1
+    Score: 1
+    Coin: 0
+  - Id: 20
+    Type: 0
+    Position: 0.9368754
+    Hurt: 7
+    Score: 7
+    Coin: 0
+  - Id: 22
+    Type: 1
+    Position: 0.97977936
+    Hurt: 0
+    Score: 0
+    Coin: 80

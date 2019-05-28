@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b475fe45fb64c12bdcae1f24f1d750, type: 3}
+  m_Name: level-master
+  m_EditorClassIdentifier: 
+  LevelMin: 1
+  LevelMax: 21
+  SpeedGrowth: 1
+  SpeedFixed: 6
+  SpeedMin: 4
+  SpeedMax: 11
+  TimeGrowth: 1
+  TimeFixed: 2
+  TimeMin: 100
+  TimeMax: 240
+  RewardGrowth: 1
+  RewardFixed: 100
+  RewardMin: 110
+  RewardMax: 210
+  ToolCleanGrowth: 2
+  ToolCleanFixed: 10
+  ToolCleanMin: 10
+  ToolCleanMax: 20
+  ToolDoubleGrowth: 1
+  ToolDoubleFixed: 5
+  ToolDoubleMin: 5
+  ToolDoubleMax: 5
+  TrashCountGrowth: 1
+  TrashCountFixed: 20
+  TrashCountMin: 20
+  TrashCountMax: 50
+  TrashBigCountGrowth: 1
+  TrashBigCountFixed: 0
+  TrashBigCountMin: 0
+  TrashBigCountMax: 0
+  TrashTotalScoreGrowth: 1
+  TrashTotalScoreFixed: 300
+  TrashTotalScoreMin: 300
+  TrashTotalScoreMax: 1000
+  TrashTotalHurtGrowth: 1
+  TrashTotalHurtFixed: 300
+  TrashTotalHurtMin: 200
+  TrashTotalHurtMax: 1000
+  CoinTotalGrowth: 1
+  CoinTotalFixed: 300
+  CoinTotalMin: 300
+  CoinTotalMax: 500
+  Children:
+  - {fileID: 11400000, guid: bffac97946f0642aea93ab3f1889418a, type: 2}
+  - {fileID: 11400000, guid: a27298d441874438199f883dce1ee9d0, type: 2}
+  - {fileID: 11400000, guid: bbdf75fca5eaa47a8bc8f5904f68a7db, type: 2}

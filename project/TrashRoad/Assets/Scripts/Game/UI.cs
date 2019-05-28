@@ -2,75 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Gear.Runtime.UI;
 public class UI : MonoBehaviour
 {
-    public Vector3 soundCameraPos;
+    public GameObject panelStart;
     public GameObject panelPlaying;
     public GameObject panelGameOver;
+
+    //panel start
+    public Toggle togSound;
+    public Toggle togWave;
+
+
+    //panel playing
     public RollText txtCoin;
+    public GameObject objScore;
     public RollText txtScore;
-    public Image imgProgress;
+    public GBlood bld;
+    public Text txtHP;
+
+
+    //panel over
     public Image imgProgressFinal;
     public Text txtFinal;
-    public Text txtStart;
-    public EffectFlyIcons effect;
-    private Level m_Level;
-    private Car m_Car;
+    public Text txtFinalScore;
+    public Transform[] scaleTransforms;
 
-    void Start()
+
+    //panel common
+    public EffectFlyIcons effect;
+
+
+    private GameUI gui { get { return Game.Instance.GUI; } }
+
+
+    public void ShowPanelStart()
     {
-        m_Level = Game.Instance.Lvl;
-        m_Car = Game.Instance.Car;
-        txtCoin.Change(0, Profile.Instance.Coin);
+        gui.ShowPanelStart();
     }
     public void OnStart()
     {
-        m_Car.IsRunning = true;
+        gui.OnStart();
     }
-    public void OnProgress(float progress)
+    public void ShowPanelPlaying()
     {
-        imgProgress.fillAmount = progress;
-    }
-    public void OnScore(int increase)
-    {
-        effect.Fly(increase, 1);
-    }
-
-    public void OnHurt(int num)
-    {
-        Profile.Instance.Coin -= num;
-    }
-
-    public void OnGold(int num)
-    {
-        effect.Fly(num);
-    }
-
-    public void OnGameOver(float progress)
-    {
-        panelPlaying.SetActive(false);
-        panelGameOver.SetActive(true);
-        imgProgressFinal.fillAmount = progress;
-        var value = Mathf.RoundToInt(progress * 100f);
-        if (value == 100)
-        {
-            txtFinal.text = "PASS";
-            txtStart.text = "NEXT";
-        }
-        else
-        {
-            txtFinal.text = value + "% COMPLETED";
-            txtStart.text = "RESTART";
-        }
-    }
-
-    public void OnUnlock()
-    {
-
+        gui.ShowPanelPlaying();
     }
 
     public void OnRestart()
     {
-
+        Game.Instance.StartLevel(-1);
+    }
+    public void OnNext()
+    {
+        Game.Instance.StartLevel(0);
     }
 }
