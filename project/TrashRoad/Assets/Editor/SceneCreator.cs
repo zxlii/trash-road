@@ -43,7 +43,7 @@ public class SceneCreator
 
         var pos = Vector3.zero;
         var roadUnit = Resources.Load<GameObject>("Prefabs/unit");
-        var cnt = data.RoadLength + 20;
+        var cnt = data.LengthBlock + 20;
         for (int i = 0; i < cnt; i++)
         {
             var roadItem = GameObject.Instantiate<GameObject>(roadUnit, roads.transform);
@@ -60,7 +60,7 @@ public class SceneCreator
             var item = GameObject.Instantiate(temp, items.transform);
             var p = Vector3.zero;
             p.y = 3f;
-            p.z = data.RoadLength * 4 * obj.Position;
+            p.z = data.LengthBlock * 4 * obj.Position;
             item.transform.localPosition = p;
             item.name = "item-" + obj.Id;
             item.tag = obj.Type == 0 ? "Trash" : "Coin";

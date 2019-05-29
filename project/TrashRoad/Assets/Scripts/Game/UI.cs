@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
     public GameObject panelStart;
     public GameObject panelPlaying;
     public GameObject panelGameOver;
+    public GameObject panelCommon;
 
     //panel start
     public Toggle togSound;
@@ -15,17 +16,20 @@ public class UI : MonoBehaviour
 
 
     //panel playing
-    public RollText txtCoin;
+    public RollText txtRollCoin;
     public GameObject objScore;
-    public RollText txtScore;
+    public RollText txtRollScore;
     public GBlood bld;
     public Text txtHP;
+    public Text txtLevel;
 
 
     //panel over
     public Image imgProgressFinal;
     public Text txtFinal;
-    public Text txtFinalScore;
+    public GameObject score;
+    public Text txtScore;
+    public GameObject btnNext;
     public Transform[] scaleTransforms;
 
 

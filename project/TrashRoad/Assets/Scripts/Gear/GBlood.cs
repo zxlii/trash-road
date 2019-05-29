@@ -16,7 +16,7 @@ namespace Gear.Runtime.UI
         [SerializeField]
         private bool _UseFilled = false;
         [SerializeField]
-        private float _Duration = .3f;
+        private float _Duration = .6f;
         [SerializeField]
         private float _Time = .5f;
 
@@ -58,7 +58,7 @@ namespace Gear.Runtime.UI
             else
             {
                 _FrontRect.DOScaleX(_Value, 0.3f);
-                _BackRect.DOScaleX(_Value, _Duration).SetDelay(0.5f);
+                _BackRect.DOScaleX(_Value, _Duration).SetDelay(0.1f);
             }
         }
     }

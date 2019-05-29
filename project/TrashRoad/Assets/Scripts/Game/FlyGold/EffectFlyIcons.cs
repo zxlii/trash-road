@@ -30,7 +30,6 @@ public class EffectFlyIcons : MonoBehaviour
     }
     private FlyItem last = null;
     private int type;
-    //0飞金币，1飞积分
     public void Fly(int origin, int inc, int type = 0)
     {
         this.origin = origin;
@@ -82,15 +81,15 @@ public class EffectFlyIcons : MonoBehaviour
         queue.Enqueue(item);
         if (item == last)
         {
+            var gui = Game.Instance.GUI;
+            var dest = origin + increase;
             if (type == 0)
             {
-                int num2 = origin + increase;
-                Game.Instance.Ui.txtCoin.Change(origin, num2);
+                gui.RollCoin(origin, dest);
             }
             else if (type == 1)
             {
-                int num2 = origin + increase;
-                Game.Instance.Ui.txtScore.Change(origin, num2);
+                gui.RollScore(origin, dest);
             }
         }
     }

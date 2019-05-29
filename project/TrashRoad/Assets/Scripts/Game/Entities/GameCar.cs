@@ -17,11 +17,16 @@ public class GameCar : Entity
     {
         var levelData = m_Game.LevelData;
         m_Speed = levelData.CarSpeed;
-        m_Maxz = levelData.MaxLength;
+        m_Maxz = levelData.Length;
 
         var pos = m_Go.transform.localPosition;
         pos.z = 0;
         m_Go.transform.localPosition = pos;
+    }
+
+    public float GetProgress()
+    {
+        return m_Go.transform.localPosition.z / m_Maxz;
     }
     public void Update()
     {
@@ -30,12 +35,11 @@ public class GameCar : Entity
             var delta = Vector3.zero;
             delta.z += Time.deltaTime * m_Speed;
             var newPos = m_Go.transform.localPosition + delta;
-            var progress = newPos.z / m_Maxz;
             if (newPos.z >= m_Maxz)
             {
                 newPos.z = m_Maxz;
                 m_Component.isRunning = false;
-                m_Game.GUI.ShowPanelOver(progress);
+                m_Game.GUI.ShowPanelOver();
             }
             m_Go.transform.localPosition = newPos;
         }
@@ -56,5 +60,8 @@ public class GameCar : Entity
     {
         m_Component.isRunning = true;
     }
-
+    public void Stop()
+    {
+        m_Component.isRunning = false;
+    }
 }

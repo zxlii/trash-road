@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 public class Item : MonoBehaviour
 {
     public int Id;
@@ -16,12 +17,23 @@ public class Item : MonoBehaviour
 
         var goldYellow = "#F3B522FF";
         var trashGray = "#76736CFF";
+
+        //87E2F8
+        //AF86F8
+        Color trashColor1;
+        ColorUtility.TryParseHtmlString("#87E2F8", out trashColor1);
+        Color trashColor2;
+        ColorUtility.TryParseHtmlString("#AF86F8", out trashColor2);
+
+        Color c = Color.green;
+
         if (m_Item.Type == 0)
         {
             var len = m_ScaleMax - m_ScaleMin;
             var persent = m_Item.Hurt / m_MaxScore;
             var scale = m_ScaleMin + persent * len;
             transform.localScale = Vector3.one * scale;
+            c = Color.Lerp(trashColor1, trashColor2, persent);
         }
         else if (m_Item.Type == 1)
         {
@@ -29,12 +41,14 @@ public class Item : MonoBehaviour
             var persent = m_Item.Coin / m_MaxGold;
             var scale = m_ScaleMin + persent * len;
             transform.localScale = Vector3.one * scale;
+            ColorUtility.TryParseHtmlString("#F3B522FF", out c);
         }
 
         var rdr = GetComponent<MeshRenderer>();
-        Color c;
-        if (ColorUtility.TryParseHtmlString(m_Item.Type == 0 ? trashGray : goldYellow, out c))
-            rdr.material.SetColor("_Color", c);
+        rdr.material.SetColor("_Color", c);
+        // Color c;
+        // if (ColorUtility.TryParseHtmlString(m_Item.Type == 0 ? trashGray : goldYellow, out c))
+        //     rdr.material.SetColor("_Color", c);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -43,7 +57,11 @@ public class Item : MonoBehaviour
         {
             if (m_Item.Type == 0)
             {
-                m_UI.OnHurt(m_Item.Hurt);
+                ManagerAudio.Instance.PlaySound("Hit");
+                var damage = m_Item.Hurt;
+                var game = Game.Instance;
+                game.GLevel.HP -= damage;
+                m_UI.OnHurt(damage);
             }
             else if (m_Item.Type == 1)
             {
@@ -54,6 +72,7 @@ public class Item : MonoBehaviour
     }
     void OnMouseUpAsButton()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (m_Item.Type != 0) return;
         ManagerAudio.Instance.PlaySound("Pick");
         m_UI.OnScore(m_Item.Score);
